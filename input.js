@@ -29,6 +29,9 @@ const setupInput = function(conn) {
     if (input === 'd') {
       conn.write('Move: right');
     }
+    if (input === 'f') {
+      conn.write("Say: Alma" );
+    }
   }
   return stdin;
 }
