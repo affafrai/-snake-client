@@ -1,16 +1,10 @@
-const {connect} = require('./play');
 const stdin = process.stdin;
 
 let connection;
 
-const handleUserInput = function(input) {
-  if (input === '\u0003') {
-    process.exit();
-  }
-}
 
 const setupInput = function(conn) {
-  connection = conn;
+  // connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -18,6 +12,24 @@ const setupInput = function(conn) {
   stdin.on('data', (data)=>{
     handleUserInput(data);
   })
+  const handleUserInput = function(input) {
+    if (input === '\u0003') {
+      process.exit();
+    }
+    if (input === 'w') {
+      conn.write('Move: up') ;
+      
+    }
+    if (input === 'a') {
+      conn.write('Move: left');
+    }
+    if (input === 's') {
+      conn.write('Move: down');
+    }
+    if (input === 'd') {
+      conn.write('Move: right');
+    }
+  }
   return stdin;
 }
 

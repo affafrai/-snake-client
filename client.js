@@ -11,20 +11,18 @@ const connect = function() {
   conn.setEncoding('utf8'); 
   // This listener waits for keyboard input
   // and on enter .... something happens
-  stdin.on('data', (input) => {
-      conn.write(input);
-  })
+  // stdin.on('data', (input) => {
+  //     conn.write(input);
+  // })
   conn.on('connect',()=>{
     console.log("Successfully connected to game server")
   })
-  
+
   conn.on('connect', () => {
     conn.write("Name: AFR");
   });
 
-  conn.on('connect', () => {
-    conn.write("Move: up");
-  });
+ 
 
 
  
@@ -41,11 +39,8 @@ const connect = function() {
 //     conn.write("Move: up");
 //   });
 // }, 150);
-  
-  
+   
   return conn;
 }
-connect().on('data',(data)=>{
-  console.log(data);
-})
+
 module.exports = {connect};
