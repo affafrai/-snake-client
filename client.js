@@ -14,10 +14,38 @@ const connect = function() {
   stdin.on('data', (input) => {
       conn.write(input);
   })
+  conn.on('connect',()=>{
+    console.log("Successfully connected to game server")
+  })
+  
+  conn.on('connect', () => {
+    conn.write("Name: AFR");
+  });
+
+  conn.on('connect', () => {
+    conn.write("Move: up");
+  });
+
+
+ 
+
+  
+// setTimeout(() => {
+//   conn.on('connect', () => {
+//     conn.write("Move: up");
+//   });
+// }, 100);
+
+// setTimeout(() => {
+//   conn.on('connect', () => {
+//     conn.write("Move: up");
+//   });
+// }, 150);
+  
   
   return conn;
 }
 connect().on('data',(data)=>{
   console.log(data);
 })
-module.exports = connect;
+module.exports = {connect};
